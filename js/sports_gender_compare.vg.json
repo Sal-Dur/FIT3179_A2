@@ -8,10 +8,11 @@
   "params": [
     {
       "name": "selectedSport",
-      "value": "Football",
+      "value": "Aerobics",
       "bind": {
         "input": "select",
         "options": [
+          "Aerobics",
           "Aqua aerobics",
           "Athletics, track and field",
           "Australian Rules football",
