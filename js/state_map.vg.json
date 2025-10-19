@@ -14,7 +14,13 @@
     {
       "lookup": "id",
       "from": {
-        "data": { "url": "data/female_participation.csv" },
+        "data": {
+          "url": "data/female_participation.csv",
+          "format": {
+            "type": "csv",
+            "parse": { "Percentage": "number" }
+          }
+        },
         "key": "id",
         "fields": ["State", "Percentage"]
       }
