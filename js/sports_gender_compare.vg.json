@@ -5,7 +5,15 @@
   "width": 950,
   "height": 550,
 
-  "data": { "url": "data/SportByGenderABS.csv" },
+"data": {
+  "url": "data/SportByGenderABS.csv",
+  "format": {
+    "type": "csv",
+    "parse": {
+      "participation": "number"
+    }
+  }
+},
 
   "transform": [
     { "calculate": "toNumber(datum.participation)", "as": "ParticipationCount" },
