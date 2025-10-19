@@ -44,6 +44,7 @@
     "y": {
       "field": "participation",
       "type": "quantitative",
+      "format": ",",
       "title": "Number of Participants"
     },
     "tooltip": [
