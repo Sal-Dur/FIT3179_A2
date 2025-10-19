@@ -41,7 +41,7 @@
       "type": "nominal",
       "scale": {
         "domain": ["≥ 50% (Regular)", "< 50% (Less Regular)"],
-        "range": ["#4CAF50", "#EF5350"]
+        "range": ["#ec407a", "#42A5F5"]
       },
       "legend": { "title": "Female Regular Exercise" }
     },
