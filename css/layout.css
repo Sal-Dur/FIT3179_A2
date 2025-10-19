@@ -1,17 +1,38 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    padding-left: 20px ;
+  background-image: url('../data/canva-various-sport-equipment-gear-MAEw4JWpYTg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-h1,h2{
-    color: black;
-    text-align: center;
+.overlay {
+  background-color: rgba(255, 255, 255, 0.92);
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.25);
 }
 
-#text_div {
-    padding: 20x;
+h1, h2 {
+  text-align: center;
+  color: #222;
+}
+
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  max-width: 800px;
+  margin: 1rem auto 2rem auto;
 }
 
 #choropleth_map, #bar_chart {
-  margin-top: 20px;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
 }
