@@ -5,7 +5,15 @@
   "width": 900,
   "height": 500,
 
-  "data": { "url": "data/SportByGenderABS.csv" },
+"data": {
+  "url": "data/SportByGenderABS.csv",
+  "format": {
+    "type": "csv",
+    "parse": {
+      "participation": "number"
+    }
+  }
+},
 
   "transform": [
     { "filter": "datum.Gender === 'Female'" },
