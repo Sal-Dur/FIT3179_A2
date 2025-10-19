@@ -84,18 +84,24 @@
   },
 
   "transform": [
-    { "filter": "datum.Sport === selectedSport" }
+    {
+      "filter": "datum.Sport === selectedSport"
+    },
+    {
+      "aggregate": [{ "op": "sum", "field": "participation", "as": "TotalParticipation" }],
+      "groupby": ["Gender"]
+    }
   ],
 
   "mark": {
     "type": "arc",
-    "outerRadius": 150,
-    "tooltip": true
+    "tooltip": true,
+    "outerRadius": 150
   },
 
   "encoding": {
     "theta": {
-      "field": "participation",
+      "field": "TotalParticipation",
       "type": "quantitative"
     },
     "color": {
@@ -110,7 +116,7 @@
     "tooltip": [
       { "field": "Gender", "type": "nominal" },
       {
-        "field": "participation",
+        "field": "TotalParticipation",
         "type": "quantitative",
         "format": ",",
         "title": "Participants"
