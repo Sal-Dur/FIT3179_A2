@@ -12,28 +12,61 @@
       "bind": {
         "input": "select",
         "options": [
-          "Football",
-          "Netball",
-          "Basketball",
-          "Swimming",
-          "Tennis",
-          "Cricket",
-          "Athletics",
-          "Cycling",
+          "Aerobics",
+          "Aqua aerobics",
+          "Athletics, track and field",
+          "Australian Rules football",
+          "Badminton",
+          "Basketball (indoor & outdoor)",
+          "Boxing",
+          "Bush walking",
+          "Canoeing / Kayaking / Dragon boat racing",
+          "Cross country running",
+          "Cycling / BMXing",
+          "Dancing / Ballet",
+          "Fishing",
+          "Fitness / Gym",
+          "Football sports (excluding, rugby, soccer, Australian Rules football)",
+          "Golf",
           "Gymnastics",
-          "Hockey"
-        ],
-        "labels": [
-          "Football",
-          "Netball",
-          "Basketball",
-          "Swimming",
-          "Tennis",
-          "Cricket",
-          "Athletics",
-          "Cycling",
-          "Gymnastics",
-          "Hockey"
+          "Hockey (indoor and outdoor)",
+          "Horse riding / Equestrian activities / Polo",
+          "Ice / snow sports",
+          "Indoor cricket",
+          "Indoor soccer",
+          "Jogging / Running",
+          "Lawn bowls",
+          "Lifesaving",
+          "Martial arts",
+          "Motor sports",
+          "Netball (Indoor and outdoor)",
+          "Outdoor cricket",
+          "Outdoor soccer",
+          "Pilates",
+          "Rock climbing / Abseiling / Caving",
+          "Rowing",
+          "Rugby league",
+          "Rugby union",
+          "Sailing",
+          "Scuba diving / Snorkelling",
+          "Shooting sports",
+          "Skateboarding / Inline hockey / Roller sports",
+          "Softball / Tee ball",
+          "Squash / Racquetball",
+          "Surf sports",
+          "Swimming / Diving",
+          "Table tennis",
+          "Tennis (indoor and outdoor)",
+          "Tenpin bowling",
+          "Trail bike riding",
+          "Triathlons",
+          "Volleyball (indoor and outdoor)",
+          "Walking for exercise",
+          "Water polo",
+          "Water volleyball / Rafting / Other water sports",
+          "Waterskiing / Powerboating",
+          "Weight lifting / Powerlifting / Body building",
+          "Yoga"
         ],
         "name": "Choose a Sport: "
       }
@@ -51,15 +84,20 @@
   },
 
   "transform": [
-    {
-      "filter": "datum.Sport === selectedSport"
-    }
+    { "filter": "datum.Sport === selectedSport" }
   ],
 
-  "mark": { "type": "arc", "tooltip": true, "outerRadius": 150 },
+  "mark": {
+    "type": "arc",
+    "outerRadius": 150,
+    "tooltip": true
+  },
 
   "encoding": {
-    "theta": { "field": "participation", "type": "quantitative" },
+    "theta": {
+      "field": "participation",
+      "type": "quantitative"
+    },
     "color": {
       "field": "Gender",
       "type": "nominal",
