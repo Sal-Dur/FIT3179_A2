@@ -4,7 +4,7 @@
   "width": 500,
   "height": 400,
   "data": {
-    "url": "js/aus-states-topo.json",
+    "url": "js/au-states-topo.json",
     "format": { "type": "topojson", "feature": "austates" }
   },
   "transform": [
