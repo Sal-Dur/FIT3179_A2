@@ -1,47 +1,36 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Top 10 most popular sports among Australian women by participation",
+  "description": "Top 10 most popular sports among Australian women by participation count",
   "title": "Top 10 Sports for Women in Australia (Number of Participants)",
   "width": 900,
   "height": 500,
 
-  "data": {
-    "url": "data/SportByGenderABS.csv"
-  },
+  "data": { "url": "data/SportByGenderABS.csv" },
 
   "transform": [
     { "filter": "datum.Gender === 'Female'" },
     { "calculate": "toNumber(datum.participation)", "as": "ParticipationCount" },
     {
-      "window": [{"op": "rank", "as": "rank"}],
-      "sort": [{"field": "ParticipationCount", "order": "descending"}]
+      "window": [{ "op": "rank", "as": "rank" }],
+      "sort": [{ "field": "ParticipationCount", "order": "descending" }]
     },
     { "filter": "datum.rank <= 10" }
   ],
 
-  "mark": {
-    "type": "bar",
-    "cornerRadiusTopLeft": 5,
-    "cornerRadiusTopRight": 5
-  },
+  "mark": { "type": "bar", "cornerRadiusTopLeft": 5, "cornerRadiusTopRight": 5 },
 
   "encoding": {
     "x": {
       "field": "Sport",
       "type": "nominal",
       "sort": "-y",
-      "axis": {
-        "labelAngle": -30,
-        "title": "Sport"
-      }
+      "axis": { "labelAngle": -30, "title": "Sport" }
     },
     "y": {
       "field": "ParticipationCount",
       "type": "quantitative",
       "title": "Number of Participants",
-      "axis": {
-        "format": ","
-      }
+      "axis": { "format": "," }
     },
     "color": {
       "field": "ParticipationCount",
