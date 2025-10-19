@@ -5,15 +5,15 @@
   "width": 900,
   "height": 500,
 
-"data": {
-  "url": "data/SportByGenderABS.csv",
-  "format": {
-    "type": "csv",
-    "parse": {
-      "participation": "number"
+  "data": {
+    "url": "data/SportByGenderABS.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "participation": "number"
+      }
     }
-  }
-},
+  },
 
   "transform": [
     { "filter": "datum.Gender === 'Female'" },
@@ -43,7 +43,10 @@
       "field": "ParticipationCount",
       "type": "quantitative",
       "title": "Number of Participants",
-      "axis": { "format": "," }
+      "axis": {
+        "format": ",",
+        "labelExpr": "format(datum, ',')"
+      }
     },
     "tooltip": [
       { "field": "Sport", "type": "nominal" },
