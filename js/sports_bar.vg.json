@@ -7,7 +7,7 @@
   "layer": [
     {
       "data": {
-        "url": "topojson/au-states-topo.json",
+        "url": "js/au-states-topo.json",
         "format": {"type": "topojson", "feature": "states"}
       },
       "transform": [
