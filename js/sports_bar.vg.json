@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Most popular sports among Australian women by participation rate",
-  "title": "Most Popular Sports for Women in Australia",
+  "description": "Top 10 most popular sports among Australian women by participation",
+  "title": "Top 10 Sports for Women in Australia (Number of Participants)",
   "width": 900,
   "height": 500,
 
@@ -10,9 +10,12 @@
   },
 
   "transform": [
-    { "filter": "datum.Gender == 'Female'" },
-    { "calculate": "toNumber(datum.Participation)", "as": "ParticipationRate" },
-    { "window": [{"op": "rank", "as": "rank"}], "sort": [{"field": "ParticipationRate", "order": "descending"}] },
+    { "filter": "datum.Gender === 'Female'" },
+    { "calculate": "toNumber(datum.participation)", "as": "ParticipationCount" },
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "ParticipationCount", "order": "descending"}]
+    },
     { "filter": "datum.rank <= 10" }
   ],
 
@@ -27,21 +30,33 @@
       "field": "Sport",
       "type": "nominal",
       "sort": "-y",
-      "axis": {"labelAngle": -30, "title": "Sport"}
+      "axis": {
+        "labelAngle": -30,
+        "title": "Sport"
+      }
     },
     "y": {
-      "field": "ParticipationRate",
+      "field": "ParticipationCount",
       "type": "quantitative",
-      "title": "Participation (%)"
+      "title": "Number of Participants",
+      "axis": {
+        "format": ","
+      }
     },
     "color": {
-      "field": "ParticipationRate",
+      "field": "ParticipationCount",
       "type": "quantitative",
-      "scale": {"scheme": "blues"}
+      "scale": { "scheme": "purples" },
+      "legend": null
     },
     "tooltip": [
-      {"field": "Sport", "type": "nominal"},
-      {"field": "ParticipationRate", "type": "quantitative", "format": ".1f", "title": "Participation (%)"}
+      { "field": "Sport", "type": "nominal" },
+      {
+        "field": "ParticipationCount",
+        "type": "quantitative",
+        "format": ",",
+        "title": "Participants"
+      }
     ]
   }
 }
