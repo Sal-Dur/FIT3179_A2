@@ -1,45 +1,47 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Female Participation in Regular Exercise (≥ 3 times per week)",
-  "width": 800,
+  "description": "Most popular sports among Australian women by participation rate",
+  "title": "Most Popular Sports for Women in Australia",
+  "width": 900,
   "height": 500,
-  "projection": {"type": "mercator"},
-  "layer": [
-    {
-      "data": {
-        "url": "js/au-states-topo.json",
-        "format": {"type": "topojson", "feature": "states"}
-      },
-      "transform": [
-        {
-          "lookup": "id",
-          "from": {
-            "data": {"url": "data/female_participation.csv"},
-            "key": "id",
-            "fields": ["State", "Percentage"]
-          }
-        },
-        {
-          "calculate": "datum.Percentage >= 50 ? '≥ 50% (Regular)' : '< 50% (Less Regular)'",
-          "as": "Category"
-        }
-      ],
-      "mark": {"type": "geoshape", "stroke": "white"},
-      "encoding": {
-        "color": {
-          "field": "Category",
-          "type": "nominal",
-          "scale": {
-            "domain": ["≥ 50% (Regular)", "< 50% (Less Regular)"],
-            "range": ["#4CAF50", "#EF5350"]
-          },
-          "legend": {"title": "Female Regular Exercise"}
-        },
-        "tooltip": [
-          {"field": "State", "type": "nominal", "title": "State"},
-          {"field": "Percentage", "type": "quantitative", "format": ".1f", "title": "% Exercising Regularly"}
-        ]
-      }
-    }
-  ]
+
+  "data": {
+    "url": "data/SportByGenderABS.csv"
+  },
+
+  "transform": [
+    { "filter": "datum.Gender == 'Female'" },
+    { "calculate": "toNumber(datum.Participation)", "as": "ParticipationRate" },
+    { "window": [{"op": "rank", "as": "rank"}], "sort": [{"field": "ParticipationRate", "order": "descending"}] },
+    { "filter": "datum.rank <= 10" }
+  ],
+
+  "mark": {
+    "type": "bar",
+    "cornerRadiusTopLeft": 5,
+    "cornerRadiusTopRight": 5
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Sport",
+      "type": "nominal",
+      "sort": "-y",
+      "axis": {"labelAngle": -30, "title": "Sport"}
+    },
+    "y": {
+      "field": "ParticipationRate",
+      "type": "quantitative",
+      "title": "Participation (%)"
+    },
+    "color": {
+      "field": "ParticipationRate",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"}
+    },
+    "tooltip": [
+      {"field": "Sport", "type": "nominal"},
+      {"field": "ParticipationRate", "type": "quantitative", "format": ".1f", "title": "Participation (%)"}
+    ]
+  }
 }
