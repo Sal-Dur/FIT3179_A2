@@ -1,0 +1,27 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top Sports Among Women in Australia",
+  "width": 800,
+  "height": 400,
+  "data": {"url": "data/SportFrequencyGenderAusplay.csv"},
+  "mark": {"type": "bar", "cornerRadiusTopLeft": 5, "cornerRadiusTopRight": 5},
+  "encoding": {
+    "x": {
+      "field": "Sport",
+      "type": "nominal",
+      "sort": "-y",
+      "axis": {"labelAngle": -30},
+      "title": "Sport"
+    },
+    "y": {"field": "Female (%)", "type": "quantitative", "title": "Participation (%)"},
+    "color": {
+      "field": "Female (%)",
+      "type": "quantitative",
+      "scale": {"scheme": "purples"}
+    },
+    "tooltip": [
+      {"field": "Sport", "type": "nominal"},
+      {"field": "Female (%)", "type": "quantitative", "format": ".1f"}
+    ]
+  }
+}
