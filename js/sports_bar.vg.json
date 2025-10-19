@@ -17,10 +17,9 @@
 
   "transform": [
     { "filter": "datum.Gender === 'Female'" },
-    { "calculate": "toNumber(datum.participation)", "as": "ParticipationCount" },
     {
       "window": [{ "op": "rank", "as": "rank" }],
-      "sort": [{ "field": "ParticipationCount", "order": "descending" }]
+      "sort": [{ "field": "participation", "order": "descending" }]
     },
     { "filter": "datum.rank <= 10" }
   ],
@@ -40,7 +39,7 @@
       "axis": { "labelAngle": -30, "title": "Sport" }
     },
     "y": {
-      "field": "ParticipationCount",
+      "field": "participation",
       "type": "quantitative",
       "title": "Number of Participants",
       "axis": {
@@ -51,7 +50,7 @@
     "tooltip": [
       { "field": "Sport", "type": "nominal" },
       {
-        "field": "ParticipationCount",
+        "field": "participation",
         "type": "quantitative",
         "format": ",",
         "title": "Participants"
