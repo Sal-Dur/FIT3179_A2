@@ -46,8 +46,7 @@
       "type": "quantitative",
       "title": "Number of Participants",
       "axis": {
-        "format": ",.0f",
-        "title": "Participants",
+        "format": ",",
         "labelExpr": "format(datum, ',')"
       }
     },
