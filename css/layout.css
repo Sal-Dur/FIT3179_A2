@@ -3,22 +3,16 @@ body, html {
   padding: 0;
   height: 100%;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-body {
-  background-image: url('../data/canva-various-sport-equipment-gear-MAEw4JWpYTg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: #ffe6f0; /* Pale pink */
 }
 
 .overlay {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: white;
   max-width: 1200px;
-  margin: 3rem auto;
-  padding: 3rem;
+  margin: 4rem auto;
+  padding: 3rem 4rem;
   border-radius: 16px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.3);
+  box-shadow: 0 0 25px rgba(0,0,0,0.2);
 }
 
 h1 {
@@ -50,7 +44,8 @@ section {
 
 #choropleth_map, #bar_chart, #gender_compare_chart {
   margin: 2rem auto;
-  width: 95%;
+  width: 100%;
+  max-width: 1100px;
   display: flex;
   justify-content: center;
 }
