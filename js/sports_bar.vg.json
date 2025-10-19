@@ -44,10 +44,7 @@
     "y": {
       "field": "participation",
       "type": "quantitative",
-      "title": "Number of Participants",
-      "axis": {
-        "format": ","
-      }
+      "title": "Number of Participants"
     },
     "tooltip": [
       {
