@@ -36,19 +36,27 @@
       "field": "Sport",
       "type": "nominal",
       "sort": "-y",
-      "axis": { "labelAngle": -30, "title": "Sport" }
+      "axis": {
+        "labelAngle": -30,
+        "title": "Sport"
+      }
     },
     "y": {
       "field": "participation",
       "type": "quantitative",
       "title": "Number of Participants",
       "axis": {
-        "format": ",",
+        "format": ",.0f",
+        "title": "Participants",
         "labelExpr": "format(datum, ',')"
       }
     },
     "tooltip": [
-      { "field": "Sport", "type": "nominal" },
+      {
+        "field": "Sport",
+        "type": "nominal",
+        "title": "Sport"
+      },
       {
         "field": "participation",
         "type": "quantitative",
