@@ -34,7 +34,7 @@
     "color": {
       "field": "Gender",
       "type": "nominal",
-      "scale": { "domain": ["Female", "Male"], "range": ["##e64072", "#42A5F5"] },
+      "scale": { "domain": ["Female", "Male"], "range": ["#e64072", "#42A5F5"] },
       "legend": { "title": "Gender" }
     },
     "xOffset": { "field": "Gender" },
