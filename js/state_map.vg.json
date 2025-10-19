@@ -1,0 +1,34 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Female sports participation by state using choropleth map",
+  "width": 500,
+  "height": 400,
+  "data": {
+    "url": "js/aus-states-topo.json",
+    "format": { "type": "topojson", "feature": "austates" }
+  },
+  "transform": [
+    {
+      "lookup": "id",
+      "from": {
+        "data": { "url": "data/female_participation.csv" },
+        "key": "id",
+        "fields": ["State", "Percentage"]
+      }
+    }
+  ],
+  "projection": { "type": "equalEarth" },
+  "mark": "geoshape",
+  "encoding": {
+    "color": {
+      "field": "Percentage",
+      "type": "quantitative",
+      "scale": { "scheme": "purples" },
+      "title": "Participation (%)"
+    },
+    "tooltip": [
+      { "field": "State", "type": "nominal" },
+      { "field": "Percentage", "type": "quantitative" }
+    ]
+  }
+}
