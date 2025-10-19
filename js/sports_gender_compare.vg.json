@@ -1,60 +1,84 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Comparison of male and female participation counts by sport",
-  "title": "Men vs Women: Number of Participants by Sport",
-  "width": 950,
-  "height": 550,
+  "description": "Pie chart comparing male vs female participation for a selected sport",
+  "title": "Gender Distribution by Sport",
+  "width": 400,
+  "height": 400,
 
-"data": {
-  "url": "data/SportByGenderABS.csv",
-  "format": {
-    "type": "csv",
-    "parse": {
-      "participation": "number"
+  "params": [
+    {
+      "name": "selectedSport",
+      "value": "Football",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Football",
+          "Netball",
+          "Basketball",
+          "Swimming",
+          "Tennis",
+          "Cricket",
+          "Athletics",
+          "Cycling",
+          "Gymnastics",
+          "Hockey"
+        ],
+        "labels": [
+          "Football",
+          "Netball",
+          "Basketball",
+          "Swimming",
+          "Tennis",
+          "Cricket",
+          "Athletics",
+          "Cycling",
+          "Gymnastics",
+          "Hockey"
+        ],
+        "name": "Choose a Sport: "
+      }
     }
-  }
-},
-
-  "transform": [
-    { "calculate": "toNumber(datum.participation)", "as": "ParticipationCount" },
-    { "filter": "isValid(datum.ParticipationCount)" }
   ],
 
-  "mark": { "type": "bar", "cornerRadiusTopLeft": 4, "cornerRadiusTopRight": 4 },
+  "data": {
+    "url": "data/SportByGenderABS.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "participation": "number"
+      }
+    }
+  },
+
+  "transform": [
+    {
+      "filter": "datum.Sport === selectedSport"
+    }
+  ],
+
+  "mark": { "type": "arc", "tooltip": true, "outerRadius": 150 },
 
   "encoding": {
-    "x": {
-      "field": "Sport",
-      "type": "nominal",
-      "axis": { "labelAngle": -30, "title": "Sport" },
-      "sort": {
-        "field": "ParticipationCount",
-        "op": "max",
-        "order": "descending"
-      }
-    },
-    "y": {
-      "field": "ParticipationCount",
-      "type": "quantitative",
-      "title": "Number of Participants",
-      "axis": { "format": "," }
-    },
+    "theta": { "field": "participation", "type": "quantitative" },
     "color": {
       "field": "Gender",
       "type": "nominal",
-      "scale": { "domain": ["Female", "Male"], "range": ["#e64072", "#42A5F5"] },
+      "scale": {
+        "domain": ["Female", "Male"],
+        "range": ["#ec407a", "#42A5F5"]
+      },
       "legend": { "title": "Gender" }
     },
-    "xOffset": { "field": "Gender" },
     "tooltip": [
-      { "field": "Sport", "type": "nominal" },
       { "field": "Gender", "type": "nominal" },
       {
-        "field": "ParticipationCount",
+        "field": "participation",
         "type": "quantitative",
         "format": ",",
         "title": "Participants"
       }
     ]
-  }
+  },
+
+  "view": { "stroke": null }
 }
