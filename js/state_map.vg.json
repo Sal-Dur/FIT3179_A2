@@ -1,12 +1,15 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Female sports participation by state using choropleth map",
-  "width": 500,
-  "height": 400,
+  "description": "Female participation by state — highlighting ≥50% vs <50%",
+  "title": "Female Participation in Regular Exercise (≥ 3 times per week)",
+  "width": 950,
+  "height": 600,
+
   "data": {
-    "url": "js/au-states-topo.json",
-    "format": { "type": "topojson", "feature": "austates" }
+    "url": "topojson/au-states-topo.json",
+    "format": { "type": "topojson", "feature": "AUS_adm1" }
   },
+
   "transform": [
     {
       "lookup": "id",
@@ -15,20 +18,35 @@
         "key": "id",
         "fields": ["State", "Percentage"]
       }
+    },
+    {
+      "calculate": "datum.Percentage >= 50 ? '≥ 50% (Regular)' : '< 50% (Less Regular)'",
+      "as": "Category"
     }
   ],
-  "projection": { "type": "equalEarth" },
-  "mark": "geoshape",
+
+  "projection": { "type": "mercator" },
+
+  "mark": { "type": "geoshape", "stroke": "white", "strokeWidth": 1 },
+
   "encoding": {
     "color": {
-      "field": "Percentage",
-      "type": "quantitative",
-      "scale": { "scheme": "purples" },
-      "title": "Participation (%)"
+      "field": "Category",
+      "type": "nominal",
+      "scale": {
+        "domain": ["≥ 50% (Regular)", "< 50% (Less Regular)"],
+        "range": ["#4CAF50", "#EF5350"]
+      },
+      "legend": { "title": "Female Regular Exercise" }
     },
     "tooltip": [
-      { "field": "State", "type": "nominal" },
-      { "field": "Percentage", "type": "quantitative" }
+      { "field": "State", "title": "State" },
+      {
+        "field": "Percentage",
+        "type": "quantitative",
+        "format": ".1f",
+        "title": "% Exercising Regularly"
+      }
     ]
   }
 }
